@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siempre Bellas - La Belleza Ahora Tiene su Espacio Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /*
+        * CSS para simular la apariencia de Tailwind y definir una paleta de colores más vibrante y elegante.
+        * Estos estilos serían reemplazados por Tailwind CSS real en una implementación completa.
+        */
+
+        :root {
+            --color-primary-accent: #C77DFF; /* Un violeta vibrante pero elegante (Lavender Blush) */
+            --color-secondary-light: #E0BBE4; /* Un tono lavanda más suave */
+            --color-background-soft: #F9F5FF; /* Fondo blanco muy suave con tinte violeta */
+            --color-card-bg: #FFFFFF; /* Blanco para tarjetas */
+            --color-text-dark: #2A0944; /* Púrpura oscuro para texto principal */
+            --color-text-medium: #5E548E; /* Tono medio para descripciones */
+            --color-text-light-subtle: #8D8DAA; /* Texto más sutil */
+            --color-border: #D8BFD8; /* Borde suave */
+            --color-footer-bg: #2A0944; /* Fondo del footer oscuro */
+            --color-footer-text: #F0E6F7; /* Texto claro para footer */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background-soft);
+            color: var(--color-text-dark);
+            line-height: 1.7; /* Ligeramente más espaciado para mejor lectura */
+            scroll-behavior: smooth;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Estilos de Tipografía */
+        .texto-titulo { font-size: 3.5rem; font-weight: 800; line-height: 1.1; text-align: center; } /* text-6xl font-extrabold leading-tight text-center */
+        .texto-subtitulo { font-size: 2.25rem; font-weight: 700; text-align: center; color: var(--color-text-dark); } /* text-4xl font-bold text-center */
+        .texto-normal { font-size: 1rem; }
+        .texto-pequeno { font-size: 0.875rem; }
+        .texto-grande { font-size: 1.125rem; }
+        .texto-resaltado { font-weight: 600; color: var(--color-primary-accent); }
+
+        /* Espaciado */
+        .p-seccion { padding: 5rem 0; } /* py-20 */
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+
+        /* Colores de Fondo */
+        .bg-primario-suave { background-color: var(--color-secondary-light); }
+        .bg-tarjeta { background-color: var(--color-card-bg); }
+        .bg-fondo-general { background-color: var(--color-background-soft); }
+        .bg-footer { background-color: var(--color-footer-bg); }
+
+        /* Colores de Texto */
+        .texto-principal-oscuro { color: var(--color-text-dark); }
+        .texto-descripcion-medio { color: var(--color-text-medium); }
+        .texto-acento-claro { color: var(--color-primary-accent); }
+        .texto-footer { color: var(--color-footer-text); }
+
+        /* Layout (Flexbox y Grid) */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+
+        /* Componentes */
+        .tarjeta-sombra {
+            background-color: var(--color-card-bg);
+            border-radius: 1rem; /* rounded-2xl */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+            padding: 2.5rem; /* p-10 */
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tarjeta-sombra:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .icono-seccion {
+            font-size: 3rem; /* text-5xl */
+            margin-bottom: 1rem;
+            color: var(--color-primary-accent);
+        }
+
+        .imagen-banner {
+            width: 40%;
+            max-height: 450px; /* h-96 */
+            object-fit: cover;
+            border-radius: 1rem; /* rounded-2xl */
+            margin-top: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .navegacion {
+            display: flex;
+            justify-content: center;
+            padding: 1.25rem 0; /* py-5 */
+            background-color: var(--color-card-bg);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 0.75rem; /* rounded-xl */
+            margin-top: 2rem;
+        }
+        .navegacion ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Para responsive */
+            justify-content: center;
+            gap: 2.5rem; /* space-x-10 */
+        }
+        .navegacion a {
+            text-decoration: none;
+            color: var(--color-text-dark);
+            font-weight: 600; /* font-semibold */
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            padding-bottom: 0.25rem; /* Espacio para el subrayado */
+        }
+        .navegacion a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--color-primary-accent);
+            transition: width 0.3s ease;
+        }
+        .navegacion a:hover {
+            color: var(--color-primary-accent);
+            transform: translateY(-2px);
+        }
+        .navegacion a:hover::after {
+            width: 100%;
+        }
+
+        .enlace-social {
+            color: var(--color-footer-text);
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .enlace-social:hover {
+            color: var(--color-primary-accent);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design (simulando media queries de Tailwind) */
+        @media (min-width: 768px) { /* md breakpoint */
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } /* Para Tecnologías */
+            .md\:text-left { text-align: left; }
+            .md\:justify-start { justify-content: flex-start; }
+            .md\:mb-0 { margin-bottom: 0; }
+            .md\:items-start { align-items: flex-start; }
+            .md\:gap-x-12 { column-gap: 3rem; }
+            .md\:flex-row { flex-direction: row; }
+        }
+
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .lg\:gap-x-16 { column-gap: 4rem; }
+            .lg\:items-start { align-items: flex-start; }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <header class="bg-primario-suave p-seccion">
+        <div class="contenedor flex flex-col items-center justify-center text-center">
+            <h1 class="texto-titulo texto-principal-oscuro mb-4">Siempre Bellas</h1>
+            <p class="texto-xl texto-descripcion-medio">La belleza ahora tiene su espacio digital. Tu santuario, a un clic.</p>
+            <img src="SiempreBellas-logo.jpeg" alt="Visión del Proyecto Siempre Bellas - Spa y Bienestar" class="imagen-banner">
+        </div>
+        <nav class="navegacion contenedor">
+            <ul class="lista-navegacion">
+                <li><a href="#que-es" class="enlace-navegacion">¿Qué es?</a></li>
+                <li><a href="#caracteristicas" class="enlace-navegacion">Características</a></li>
+                <li><a href="#tecnologias" class="enlace-navegacion">Tecnologías</a></li>
+                <li><a href="#beneficios" class="enlace-navegacion">Beneficios</a></li>
+                <li><a href="#contacto" class="enlace-navegacion">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="que-es" class="p-seccion bg-fondo-general">
+            <div class="contenedor texto-centrado">
+                <h2 class="texto-subtitulo texto-principal-oscuro mb-10">Reinventando la Experiencia de Belleza y Spa</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="texto-contenido md:text-left">
+                        <p class="texto-grande texto-descripcion-medio mb-4">
+                            Siempre Bellas es una plataforma web innovadora, pensada para <span class="texto-resaltado">transformar digitalmente</span> la gestión y visibilidad de tu salón de belleza y spa. Con ella, llevamos tu negocio al siguiente nivel, haciendo que la belleza y el bienestar estén al alcance de todos, en cualquier momento y lugar.
+                        </p>
+                        <p class="texto-grande texto-descripcion-medio">
+                            Nuestro objetivo es doble: <span class="texto-resaltado">empoderar a los clientes</span> con una experiencia online fluida y atractiva, y <span class="texto-resaltado">simplificar la administración</span> del salón, optimizando procesos y liberando tiempo valioso.
+                        </p>
+                    </div>
+                    <div class="tarjeta-sombra">
+                        <i class="fas fa-magic icono-seccion"></i>
+                        <h3 class="texto-xl font-semibold texto-principal-oscuro mb-3">Tu Salón, Ahora Digital</h3>
+                        <p class="texto-descripcion-medio">Visualiza tu catálogo de servicios, gestiona productos con facilidad y permite a tus clientes agendar sus citas con unos pocos clics. Una solución integral para el mundo moderno.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="caracteristicas" class="p-seccion bg-primario-suave">
+            <div class="contenedor texto-centrado">
+                <h2 class="texto-subtitulo texto-principal-oscuro mb-10">Funcionalidades Diseñadas para Ti</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                    <div class="tarjeta-sombra">
+                        <i class="fas fa-users icono-seccion"></i>
+                        <h3 class="texto-xl font-semibold texto-principal-oscuro mb-4">Experiencia de Cliente Intuitiva</h3>
+                        <ul class="texto-descripcion-medio text-left">
+                            <li class="mb-2"><i class="fas fa-home fa-fw texto-acento-claro"></i> Página de Inicio: Bienvenida cálida y visión general del salón.</li>
+                            <li class="mb-2"><i class="fas fa-cut fa-fw texto-acento-claro"></i> Servicios Detallados: Galería de tratamientos con descripciones y precios.</li>
+                            <li class="mb-2"><i class="fas fa-box-open fa-fw texto-acento-claro"></i> Productos Online: Vitrina virtual con contacto directo vía WhatsApp para compras.</li>
+                            <li class="mb-2"><i class="fas fa-calendar-alt fa-fw texto-acento-claro"></i> Agenda de Citas: Formulario sencillo para reservas 24/7.</li>
+                            <li><i class="fas fa-map-marker-alt fa-fw texto-acento-claro"></i> Contacto Completo: Ubicación, teléfono, email y redes sociales.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tarjeta-sombra">
+                        <i class="fas fa-user-tie icono-seccion"></i>
+                        <h3 class="texto-xl font-semibold texto-principal-oscuro mb-4">Panel de Administración Eficiente</h3>
+                        <ul class="texto-descripcion-medio text-left">
+                            <li class="mb-2"><i class="fas fa-lock fa-fw texto-acento-claro"></i> Login Seguro: Acceso protegido para el personal del salón.</li>
+                            <li class="mb-2"><i class="fas fa-edit fa-fw texto-acento-claro"></i> Gestión de Contenido: Actualiza fácilmente servicios, productos y horarios.</li>
+                            <li class="mb-2"><i class="fas fa-clipboard-list fa-fw texto-acento-claro"></i> Control de Reservas: Visualiza, confirma y gestiona todas las citas.</li>
+                            <li><i class="fas fa-chart-line fa-fw texto-acento-claro"></i> Futuras Analíticas: Preparado para reportes y métricas de negocio.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tecnologias" class="p-seccion bg-fondo-general">
+            <div class="contenedor texto-centrado">
+                <h2 class="texto-subtitulo texto-principal-oscuro mb-10">La Fuerza de la Tecnología Detrás de tu Belleza</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-x-12 lg:gap-x-16">
+                    <div class="tarjeta-sombra flex flex-col items-center md:items-start text-center md:text-left">
+                        <i class="fas fa-code icono-seccion"></i>
+                        <h3 class="texto-grande font-semibold texto-principal-oscuro mb-2">Frontend</h3>
+                        <ul class="texto-descripcion-medio lista-tecnologias">
+                            <li>HTML: La base de nuestra estructura web.</li>
+                            <li>React (CDN): Para una interfaz de usuario dinámica y moderna.</li>
+                            <li>Tailwind CSS: Diseño rápido, responsive y elegante sin esfuerzo.</li>
+                        </ul>
+                    </div>
+                    <div class="tarjeta-sombra flex flex-col items-center md:items-start text-center md:text-left">
+                        <i class="fas fa-server icono-seccion"></i>
+                        <h3 class="texto-grande font-semibold texto-principal-oscuro mb-2">Backend</h3>
+                        <ul class="texto-descripcion-medio lista-tecnologias">
+                            <li>Node.js + Express.js: Nuestro motor robusto para la lógica del servidor.</li>
+                            <li>Firebase Admin SDK: Conexión segura y eficiente con Firebase.</li>
+                        </ul>
+                    </div>
+                    <div class="tarjeta-sombra flex flex-col items-center md:items-start text-center md:text-left">
+                        <i class="fas fa-database icono-seccion"></i>
+                        <h3 class="texto-grande font-semibold texto-principal-oscuro mb-2">Datos y Despliegue</h3>
+                        <ul class="texto-descripcion-medio lista-tecnologias">
+                            <li>Firestore: Base de datos NoSQL flexible y escalable.</li>
+                            <li>Firebase Authentication: Autenticación de usuarios sencilla y segura.</li>
+                            <li>Vercel (Frontend): Despliegue ágil y rendimiento óptimo.</li>
+                            <li>Render.com (Backend): Hosting confiable para el servidor.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios" class="p-seccion bg-primario-suave">
+            <div class="contenedor texto-centrado">
+                <h2 class="texto-subtitulo texto-principal-oscuro mb-10">Un Futuro Brillante para tu Negocio</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="tarjeta-sombra">
+                        <i class="fas fa-laptop-code icono-seccion"></i>
+                        <h3 class="texto-xl font-semibold texto-principal-oscuro mb-3">Transformación Digital</h3>
+                        <p class="texto-descripcion-medio">Lleva tu salón al mundo online, expande tu alcance y moderniza la interacción con tus clientes, diferenciándote de la competencia.</p>
+                    </div>
+                    <div class="tarjeta-sombra">
+                        <i class="fas fa-hand-holding-heart icono-seccion"></i>
+                        <h3 class="texto-xl font-semibold texto-principal-oscuro mb-3">Gestión Simplificada</h3>
+                        <p class="texto-descripcion-medio">Optimiza procesos, reduce el trabajo manual y dedica más tiempo a lo que realmente importa: ofrecer experiencias de belleza excepcionales.</p>
+                    </div>
+                    <div class="tarjeta-sombra">
+                        <i class="fas fa-rocket icono-seccion"></i>
+                        <h3 class="texto-xl font-semibold texto-principal-oscuro mb-3">Escalabilidad Ilimitada</h3>
+                        <p class="texto-descripcion-medio">Diseñado para crecer contigo. Agrega fácilmente nuevas funciones, como pasarelas de pago, reportes avanzados o nuevos roles de usuario, en el futuro.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto" class="bg-footer texto-footer py-10">
+        <div class="contenedor grid grid-cols-1 md:grid-cols-3 gap-8 texto-centrado md:text-left">
+            <div class="info-contacto mb-8 md:mb-0">
+                <h3 class="texto-grande font-semibold mb-4">Siempre Bellas</h3>
+                <p class="texto-pequeno mb-2"><i class="fas fa-map-marker-alt fa-fw"></i> C.C. Plaza Toros, Trujillo, Perú</p>
+                <p class="texto-pequeno mb-2"><i class="fas fa-phone-alt fa-fw"></i> <a href="tel:+51987654321" class="enlace-social">+51 947 725 699</a></p>
+                <p class="texto-pequeno"><i class="fas fa-envelope fa-fw"></i> <a href="mailto:info@siemprebellas.com" class="enlace-social">siemprebellas.info@gmail.com</a></p>
+            </div>
+            <div class="redes-sociales mb-8 md:mb-0">
+                <h3 class="texto-grande font-semibold mb-4">Conéctate con Nosotros</h3>
+                <div class="flex justify-center md:justify-start gap-6">
+                    <a href="https://facebook.com/siemprebellas" target="_blank" class="enlace-social" aria-label="Facebook de Siempre Bellas">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
+                    <a href="https://instagram.com/siemprebellas" target="_blank" class="enlace-social" aria-label="Instagram de Siempre Bellas">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                    <a href="https://wa.me/947725699" target="_blank" class="enlace-social" aria-label="WhatsApp de Siempre Bellas">
+                        <i class="fab fa-whatsapp fa-2x"></i>
+                    </a>
+                    </div>
+            </div>
+            <div class="creditos-proyecto text-center md:text-right">
+                <h3 class="texto-grande font-semibold mb-4">Proyecto Salon & Spa Siempre Bellas &copy; 2025</h3>
+                <p class="texto-pequeno">Diseño y Desarrollo por Jhonatan Miñano</p>
+                <p class="texto-pequeno">Todos los derechos reservados.</p>
+                <p class="texto-pequeno mt-4">
+                    <a href="https://fontawesome.com/" target="_blank" class="enlace-social">Iconos de Font Awesome</a>
+                    <br>
+                    <a href="https://unsplash.com/" target="_blank" class="enlace-social">Imágenes de Unsplash</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     // Ejemplo de scroll suave para los enlaces de navegación
+        //     document.querySelectorAll('a.enlace-navegacion').forEach(anchor => {
+        //         anchor.addEventListener('click', function (e) {
+        //             e.preventDefault();
+        //             const targetId = this.getAttribute('href');
+        //             const targetElement = document.querySelector(targetId);
+        //             if (targetElement) {
+        //                 window.scrollTo({
+        //                     top: targetElement.offsetTop - (document.querySelector('nav').offsetHeight || 0), // Ajusta por la altura de la nav bar si es fija
+        //                     behavior: 'smooth'
+        //                 });
+        //             }
+        //         });
+        //     });
+        // });
+    </script>
+
+</body>
+</html>
